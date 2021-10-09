@@ -1,0 +1,62 @@
+﻿
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <style>
+    	.button_conetent{
+
+    		padding: 0 24px 84px;
+
+    		}
+    	.button_conetent button{
+
+    		color: #fff;
+		    background-color: #06f;
+		    width: 100%;
+		    margin-top: 30px;
+		    height: 36px;
+		    display: inline-block;
+		    padding: 0 16px;
+		    font-size: 14px;
+		    line-height: 32px;
+		    text-align: center;
+		    cursor: pointer;
+
+		    border: 1px solid;
+		    border-radius: 3px;
+    		}
+
+    </style>
+   <script src="gif.js?v=3"></script>
+  <script src="video.js?v=3"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h2>Video to GIF</h2>
+      <input id="sample" value="100">
+
+
+
+      <p id="info">Loading...</p>
+
+
+      <video width="100%" id="video">
+        <source src="clip.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.'>
+        <source src="clip.ogv" type='video/ogg; codecs="theora, vorbis"'>
+      </video>
+  	     <div class='button_conetent'>
+
+       	 <button id="go">开始转换</button>
+       </div>
+
+
+    <p><img id="result"></p>
+
+
+    </div>
+    </div>
+  </body>
+</html>
