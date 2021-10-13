@@ -18,8 +18,12 @@
                     // 这函数是 3: [function(require, module, exports) {中的require
                     console.log('11111',e)
                     var n = t[o][1][e];
-                    return s(n ? n : e)
+                    var x = s(n ? n : e)
+                    console.log(x)
+                    return x
                 }, l, l.exports, e, t, n, r)
+                console.log('2222',l.exports)
+
             }
             return n[o].exports
         }
@@ -142,11 +146,47 @@
                     this[key] = value;
                 }
                     .overloadSetter();
+                console.log('tttttt', Array.implement, Number.alias)
+                // Function.prototype.isPrototypeOf(Array)
+                // Object.prototype.isPrototypeOf(Function)
+                // Function.prototype.implement = function(key, value) {
+                //     this.prototype[key] = value;
+                // }
+                   // .overloadSetter();
 
-                Function.prototype.implement = function(key, value) {
+                var ta = function(key, value) {
                     this.prototype[key] = value;
                 }
-                    .overloadSetter();
+
+               var tar =  ta.overloadSetter();
+
+                Function.prototype.implement = tar;
+                Function.prototype.aaaa = tar;
+                Function.prototype.bbbb = function(){return 'aghs'}
+
+                console.log('aaaa', Array.aaaa, Array.bbbb, Number.bbbb, Object.bbbb, String.bbbb, Date.bbbb)
+                console.log('kkk', Array.implement,  Number.alias)
+                // 所有函数都应看作 Function 类的实例。
+                //  Array.__proto__===Function.prototype//true
+                // Date.__proto__===Function.prototype//true
+                // String.__proto__===Function.prototype//true
+                // Number.__proto__===Function.prototype//true
+                // Boolean.__proto__===Function.prototype//true
+                // Object.__proto__ === Function.prototype//true
+                // Symbol.__proto__===Function.prototype//true
+                // 所有函数.__proto__===Function.Prototype //  true
+                // Function.__proto__===Function.Prototype//true
+                // Function.prototype.isPrototypeOf(Array) => true
+                // Object.prototype.isPrototypeOf(Function.prototype)  => true
+                // Function.prototype === Object.__proto__  // true
+
+                //console.log(Function.prototype.isPrototypeOf(Object));  //返回true
+               // console.log(Object.prototype.isPrototypeOf(Function)) //返回true
+//                 String.prototype.__proto__=== Object.prototype//true
+//                 Number.prototype.__proto__=== Object.prototype//true
+//                 Boolean.prototype.__proto__=== Object.prototype//true
+// //同理
+//                 Function.prototype.__proto__=== Object.prototype//true
 
                 // From
 
@@ -159,7 +199,7 @@
                         ;
                 }
                 ;
-
+                console.log('bbbbb',Type && Type.implement,Array.implement, Number.alias)
                 Array.from = function(item) {
                     if (item == null)
                         return [];
@@ -179,7 +219,7 @@
                 ;
 
                 // hide, protect
-
+                console.log('cccc',Type && Type.implement,Array.implement, Number.alias)
                 Function.implement({
 
                     hide: function() {
@@ -193,7 +233,12 @@
                     }
 
                 });
+                console.log('cccc',Type && Type.implement,Array.implement, Number.alias)
 
+                var xyz = function(name,value){
+
+                    return name + value
+                }
                 // Type
 
                 var Type = this.Type = function(name, object) {
@@ -223,14 +268,14 @@
                         return object;
                     }
                 ;
-
+                console.log('dddd', Type && Type.implement,Array.implement, xyz.implement,xyz.aaaa ,xyz.bbbb , Number.alias)
                 var toString = Object.prototype.toString;
 
                 Type.isEnumerable = function(item) {
                     return (item != null && typeof item.length == 'number' && toString.call(item) != '[object Function]');
                 }
                 ;
-
+                console.log('eeee', Type.implement,Array.implement, Number.alias)
                 var hooks = {};
 
                 var hooksOf = function(object) {
@@ -261,7 +306,7 @@
                             return method.apply(item, slice.call(arguments, 1));
                         });
                 };
-
+                console.log('ffff', Type.implement,Array.implement, Number.alias)
                 var extend = function(name, method) {
                     if (method && method.$hidden)
                         return;
@@ -269,7 +314,7 @@
                     if (previous == null || !previous.$protected)
                         this[name] = method;
                 };
-
+                console.log('hhhh', Type.implement,Array.implement, Number.alias)
                 Type.implement({
 
                     implement: implement.overloadSetter(),
@@ -685,7 +730,9 @@ provides: Function
             attempt: function(args, bind) {
                 try {
                     return this.apply(bind, Array.from(args));
-                } catch (e) {}
+                } catch (e) {
+                    console.log('oouuyywqvwssdf',e)
+                }
 
                 return null;
             },
@@ -4765,13 +4812,13 @@ provides: [Element.Dimensions]
 
     3: [function(require, module, exports) {
         var now, ready, ref, ref1;
-
-        require('mootools.js');
+debugger;
+       var son = require('mootools.js');
         //1
-
+        debugger;
         ready = require('ready.js');
         //2
-
+        debugger;
         now = ((ref = window.performance) != null ? (ref1 = ref.now) != null ? ref1.bind(window.performance) : void 0 : void 0) || Date.now;
 
         ready(function() {
